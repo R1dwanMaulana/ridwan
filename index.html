@@ -9,6 +9,7 @@
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <!-- <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
         <title>My Portfolio</title>
     </head>
@@ -213,11 +214,21 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Submit" class="contact__button button">
+                     <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+                        <strong>Thank you!</strong> your message has been received 👍🏻
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <form name="form-feedback" action="" class="contact__form">
+                        <input type="text" placeholder="Name" class="contact__input" name="nama">
+                        <input type="email" placeholder="Email" class="contact__input" name="email">
+                        <textarea name="pesan" placeholder="Pesan" id="" cols="0" rows="6" class="contact__input"></textarea>
+                        <!-- <input type="button" value="Submit" class="contact__button button"> -->
+                        <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+
+                        <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Memuat...
+                        </button>
                     </form>
                 </div>
             </section>
@@ -241,5 +252,33 @@
 
         <!--===== MAIN JS =====-->
         <!-- <script src="assets/js/main.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxazs5EsjrM82VfekQn3RX4crrFoqm2rCeWiEkcg9LHXkCYHXc1nWuShfHRhunH5bKflg/exec'
+            const form = document.forms['form-feedback']
+            const btnKirim = document.querySelector('.btn-kirim');
+            const btnLoading = document.querySelector('.btn-loading');
+            const myAlert = document.querySelector('.my-alert');
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+
+              btnLoading.classList.toggle('d-none');
+              btnKirim.classList.toggle('d-none');
+
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btnLoading.classList.toggle('d-none');
+                    btnKirim.classList.toggle('d-none');
+                    // alert
+                    myAlert.classList.toggle('d-none')
+                    // reset form
+                    form.reset()
+                    console.log('Success!', response)
+                })
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
     </body>
 </html>
