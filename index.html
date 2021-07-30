@@ -182,17 +182,17 @@
                     <div class="work__img">
                         <h4>info liga</h4>
                         <img src="assets/img/info liga.png" alt="info-liga">
-                        <a href="https://info-liga.web.app" class="button">View</a>
+                        <a href="https://info-liga.web.app" target="_blank" class="button">View</a>
                     </div>
                     <div class="work__img">
                         <h4>Menu Restoran</h4>
                         <img src="assets/img/restodev.png" alt="resto-dev">
-                        <a href="https://restodev9.web.app" class="button">View</a>
+                        <a href="https://restodev9.web.app" target="_blank" class="button">View</a>
                     </div>
                     <div class="work__img">
                         <h4>IT UNISMA</h4>
                         <img src="assets/img/IT-unisma.png" alt="IT-unisma">
-                        <a href="https://r1dwanmaulana.github.io/IT-unisma/" class="button">View</a>
+                        <a href="https://r1dwanmaulana.github.io/IT-unisma/" target="_blank" class="button">View</a>
                     </div>
                     <div class="work__img">
                         <h4>Niki Store</h4>
@@ -205,6 +205,11 @@
                     <div class="work__img">
                         <h4>Hijab Store</h4>
                         <img src="assets/img/hijabstore.png" alt="hijabstore">
+                    </div>
+                    <div class="work__img">
+                        <h4>Qur'an id</h4>
+                        <img src="assets/img/quran.png" alt="quran-id">
+                        <a href="https://quran-id.vercel.app" target="_blank" class="button">View</a>
                     </div>
                 </div>
             </section>
@@ -279,6 +284,15 @@
                 })
                 .catch(error => console.error('Error!', error.message))
             })
+          </script>
+          <script>
+            function initFreshChat() {
+              window.fcWidget.init({
+                token: "6bf0b6f1-0488-46ba-ac45-f6ac52abfaa8",
+                host: "https://wchat.freshchat.com"
+              });
+            }
+            function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"Freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
           </script>
     </body>
 </html>
